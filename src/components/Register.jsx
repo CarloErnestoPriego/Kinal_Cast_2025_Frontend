@@ -91,7 +91,7 @@ export const Register = ({ switchAuthHandler }) => {
 
     return (
         <div className="register-container">
-            <Logo text={'Register Kinal Cast'} />
+            <Logo text={''} />
             <form className="auth-form">
                 <Input
                     field='email'
@@ -138,7 +138,7 @@ export const Register = ({ switchAuthHandler }) => {
                 </button>
             </form>
             <span onClick={switchAuthHandler} className='auth-form-switch-label'>
-                Already have an account? Sign up
+                Already have an account? Sign in
             </span>
         </div>
     )
