@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {
-    validatePasswordMessage,
+    passwordValidationMessage,
     validatePassword
 } from "../../shared/validators"
 import { useChangePassword } from "../../shared/hooks";
@@ -10,13 +10,13 @@ const inputs = [
     {
         field: 'password',
         label: 'Password',
-        validationMessage: validatePasswordMessage,
+        validationMessage: passwordValidationMessage,
         type: 'password'
     },
     {
         field: 'newPassword',
         label: 'New Password',
-        validationMessage: validatePasswordMessage,
+        validationMessage: passwordValidationMessage,
         type: 'password'
     }
 ]

@@ -1,5 +1,5 @@
 import toast from "react-hot-toast";
-import { changePassword as changePasswordRequest } from "../../services";
+import { changePassword as changePasswordRequest } from "../../service/";
 
 export const useChangePassword = () => {
 

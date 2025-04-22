@@ -1,6 +1,6 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { getChannels as getChannelsRequest, getFollowedChannels } from "../../services/api";
+import { getChannels as getChannelsRequest, getFollowedChannels } from "../../service/api";
 
 export const useChannels = () => {
 

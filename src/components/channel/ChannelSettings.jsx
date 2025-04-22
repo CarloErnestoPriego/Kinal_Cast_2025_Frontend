@@ -1,13 +1,13 @@
 import { useState } from "react";
 import {
     validateUsername,
-    validateUsernameMessage,
-    validationAvatarUrl,
-    avatarUrlValidationMessage,
+    usernameValidationMessage,
+    validateAvatarUrl,
+    avatarUrlValidateMessage,
     validateDescription,
     descriptionValidateMessage,
     validateTitle,
-    validateTitleMessage
+    titleValidationMessage
 } from '../../shared/validators'
 import { Input } from '../Input'
 
@@ -15,19 +15,19 @@ const inputs = [
     {
         field: 'username',
         label: 'Username',
-        validationMessage: validateUsernameMessage,
+        validationMessage: usernameValidationMessage,
         type: 'text'
     },
     {
         field: 'title',
         label: 'Title',
-        validationMessage: validateTitleMessage,
+        validationMessage: titleValidationMessage,
         type: 'text'
     },
     {
         field: 'avatarUrl',
         label: 'Avatar Url',
-        validationMessage: avatarUrlValidationMessage,
+        validationMessage: avatarUrlValidateMessage,
         type: 'text'
     },
     {
@@ -51,7 +51,7 @@ export const ChannelSettings = ({ settings, saveSettings }) => {
             value: settings.title
         },
         avatarUrl: {
-            isValid: validationAvatarUrl(settings.avatarUrl),
+            isValid: validateAvatarUrl(settings.avatarUrl),
             showError: false,
             value: settings.avatarUrl
         },
@@ -84,7 +84,7 @@ export const ChannelSettings = ({ settings, saveSettings }) => {
                 isValid = validateTitle(value)
                 break;
             case 'avatarUrl':
-                isValid = validationAvatarUrl(value)
+                isValid = validateAvatarUrl(value)
                 break;
             case 'description':
                 isValid = validateDescription(value)
@@ -112,4 +112,31 @@ export const ChannelSettings = ({ settings, saveSettings }) => {
             description: formState.description.value
         })
     }
+
+    const isSubmitButtonDisable = !formState.username.isValid ||
+        !formState.title.isValid ||
+        !formState.avatarUrl.isValid ||
+        !formState.description.isValid
+
+    return (
+        <form className="settings-form">
+            {inputs.map((inputs) => (
+                <Input 
+                    key={inputs.field}
+                    field={inputs.field}
+                    label={inputs.label}
+                    value={formState[inputs.field].value}
+                    onChangeHandler={handleInputValueChange}
+                    onBlurHandler={handleInputValidationOnBlur}
+                    showErrorMessage={formState[inputs.field].showError}
+                    validationMessage={inputs.validationMessage}
+                    type={inputs.type}
+                    textArea={inputs.textArea}
+                />
+            ))}
+            <button onClick={handleFormSubmit} disabled={isSubmitButtonDisable}>
+                Update
+            </button>
+        </form>
+    )
 }

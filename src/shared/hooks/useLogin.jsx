@@ -4,7 +4,7 @@ import { login as loginRequest } from "../../service";
 import toast from "react-hot-toast";
 
 export const useLogin = () => {
-    const [isLoading, setIsLoading] = useState(false); 
+    const [isLoading, setIsLoading] = useState(false);
 
     const navigate = useNavigate();
 
@@ -12,23 +12,23 @@ export const useLogin = () => {
 
         setIsLoading(true);
 
-        const response = await loginRequest(email, password)
+        const response = await loginRequest({email, password})
 
         setIsLoading(false);
 
-        console.log(response);
+        console.log(response)
 
-        if (response.error) {
-            return toast.error(response.error?.response?.data || 'Error en al iniciar sesión, intente más tarde.');
+        if(response.error){
+            return toast.error(response.error?.response?.data || 'Ocurrio un error al iniciar sesion, intenta de nuevo')
         }
 
-        const { userDetails } = response.data;
+        const { userDetails } = response.data
 
         localStorage.setItem('user', JSON.stringify(userDetails));
 
-        toast.success('Secion iniciada correctamente')
+        toast.success('Sesion iniciada correctamente')
 
-        navigate('/');
+        navigate('/')
     }
 
     return {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
-import { getChannelSettings, updateChannelSettings } from "../../services";
+import { getChannelSettings, updateChannelSettings } from "../../service/api";
 
 export const useChannelSettings = () => {
 
