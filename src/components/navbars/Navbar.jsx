@@ -48,7 +48,7 @@ export const Navbar = () => {
     return (
         <div className="nav-container">
             <NavLogo />
-            <div className="nav-button-container">
+            <div className="nav-buttons-container">
                 <NavButton text="Browse" onclickHandler={handleNavigateToChannelsPage} />
                 {!isLogged ? (
                     <NavButton text="Login" onclickHandler= {handleNavigateToAuthPage} />
