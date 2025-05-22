@@ -92,10 +92,10 @@ export const getFollowedChannels = async () => {
     try {
         return await apiClient.get('/channels/followed')
     } catch (error) {
-        checkResponseStatus(e)
+        checkResponseStatus(error)
         return {
             error: true,
-            e
+            e: error
         }
     }
 }

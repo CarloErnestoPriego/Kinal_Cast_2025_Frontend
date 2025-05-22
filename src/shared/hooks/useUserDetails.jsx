@@ -21,4 +21,4 @@ export const useUserDetails = () => {
         username: userDetails?.username ? userDetails.username: 'Guest',
         logout
     }
-}
+} 
